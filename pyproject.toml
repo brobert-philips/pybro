@@ -1,0 +1,40 @@
+[project]
+name = "pybro"
+version = "0.1.0"
+authors = [
+  { name="Benjamin Robert", email="benjamin.robert@philips.com" },
+]
+description = "Package gathering several python classes/methods for Clinical Science projects."
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Healthcare Industry",
+    "License :: Other/Proprietary License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Image Processing",
+    "Topic :: Scientific/Engineering :: Medical Science Apps",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Visualization",
+]
+dependencies = [
+]
+
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [
+    "setuptools>=67.6.1",
+    "wheel>=0.40.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/brobert-philips/pybro"
+"Bug Tracker" = "https://github.com/brobert-philips/pybro/issues"
+
+[tool.coverage.run]
+source = ["src"]

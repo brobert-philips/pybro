@@ -1,0 +1,48 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#326a82",
+        "activityBar.background": "#326a82",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#d38cbd",
+        "activityBarBadge.foreground": "#15202b",
+        "commandCenter.border": "#e7e7e799",
+        "editorGroup.border": "#326a82",
+        "panel.border": "#326a82",
+        "sash.hoverBorder": "#326a82",
+        "sideBar.border": "#326a82",
+        "statusBar.background": "#244c5d",
+        "statusBar.border": "#244c5d",
+        "statusBar.debuggingBackground": "#5d3524",
+        "statusBar.debuggingBorder": "#5d3524",
+        "statusBar.debuggingForeground": "#e7e7e7",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#326a82",
+        "statusBarItem.remoteBackground": "#244c5d",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "tab.activeBorder": "#326a82",
+        "titleBar.activeBackground": "#244c5d",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.border": "#244c5d",
+        "titleBar.inactiveBackground": "#244c5d99",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.color": "#244C5D",
+    "[markdown][python]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wrappingIndent": "same",
+        "editor.wordWrapColumn": 88
+    },
+    "[yaml]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wrappingIndent": "same",
+        "editor.wordWrapColumn": 100
+    },
+    "python.analysis.extraPaths": [
+        "./src"
+    ]
+}
