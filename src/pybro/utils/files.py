@@ -61,8 +61,8 @@ class GenericFile:
             self.file_path = os.path.abspath(file_path)
 
         # Control if path is valid and file supported
-        if not GenericFile.test_file(self.file_path):
-            err_msg = f"No valid file path was provided ({self.file_path})."
+        if not self.__class__.test_file(self.file_path):
+            err_msg = f"File is not supported ({self.file_path})."
             logger.error(err_msg)
             raise FileNotFoundError(err_msg)
 
@@ -104,7 +104,7 @@ class GenericFile:
     @staticmethod
     def test_file(file_path: str = None) -> bool:
         """
-        Test if a file exists.
+        Test if file exists and is writable.
 
         Parameters
         ----------
@@ -280,7 +280,7 @@ class GenericDir:
     @staticmethod
     def test_dir(dir_path: str):
         """
-        Test if directory is  a writable directory.
+        Test if directory is a writable directory.
 
         Parameters
         ----------

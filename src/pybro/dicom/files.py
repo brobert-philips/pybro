@@ -7,6 +7,7 @@ DICOM directory management in pybro package.
 
 # Import packages and submodules
 import logging
+import pydicom
 
 # Import submodules, classes and methods
 from pybro.utils import GenericFile, GenericDir
@@ -29,6 +30,8 @@ class DicomFile(GenericFile):
         Extension of the file.
     file_dir : str
         Directory of the file.
+    dataset : pydicom.dataset.FileDataset
+        DICOM dataset.
     """
 
     FILE_TYPES = {
@@ -53,7 +56,38 @@ class DicomFile(GenericFile):
         super().__init__(file_path)
 
         # Retrieve DICOM dataset
-        self.dataset = ""
+        self.dataset = pydicom.dcmread(self.file_path)
+
+    @staticmethod
+    def test_file(file_path: str = None) -> bool:
+        """
+        Test if file exists, is writable and is a DICOM supported file.
+
+        Parameters
+        ----------
+        file_path : str
+            Path to the file.
+
+        Returns
+        -------
+        bool
+            True if file exists and is writable, False otherwise.
+        """
+        # Test if file exists and is writable
+        if not GenericFile.test_file(file_path):
+            return False
+        dicom_tags = pydicom.dcmread(file_path)
+
+        # ImageType tag must exist, and it should have at least 3 values
+        if (0x0008, 0x0008) not in dicom_tags:
+            logger.info("No ImageType tag.")
+            return False
+
+        if len(dicom_tags[0x0008, 0x0008].value) < 3:
+            logger.info("No ImageType tag.")
+            return False
+
+        return True
 
 
 class DicomDir(GenericDir):
