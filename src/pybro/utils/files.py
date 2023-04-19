@@ -70,6 +70,33 @@ class GenericFile:
         self.file_ext  = os.path.splitext(self.file_name)[1]
         self.file_dir  = os.path.dirname (self.file_path)
 
+    def __str__(self) -> str:
+        """
+        Return a string representation of the object.
+
+        Returns
+        -------
+        str
+            String representation of the object.
+        """
+        return f"{__class__}(file_name: {self.file_name} ; file_dir: {self.file_dir})"
+
+    def __eq__(self, __value: object) -> bool:
+        """
+        Check if two objects are equal.
+
+        Parameters
+        ----------
+        __value : object
+            Object to compare with.
+
+        Returns
+        -------
+        bool
+            True if objects are equal, False otherwise.
+        """
+        return self.file_path == __value.file_path
+
     @staticmethod
     def test_file(file_path: str = None) -> bool:
         """
@@ -178,7 +205,7 @@ class GenericDir:
         List of the files in the folder.
     """
 
-    def __init__(self, dir_path: str = None) -> None:
+    def __init__(self, dir_path: str = None, file_class: GenericFile = None) -> None:
         """
         Initialize a generic directory object.
 
@@ -190,8 +217,57 @@ class GenericDir:
         ----------
         dir_path : str
             Path to the directory.
+
+        TODO: build file_list attribute.
         """
-        self.dir_path = dir_path
+        # Check dir_path and set its instance value
+        try:
+            # Select directory path if no path is provided
+            if dir_path is None:
+                dir_path  = GenericDir.dialog_select_dir()
+            if not GenericDir.test_dir(dir_path):
+                err_msg = "No valid directory path was provided."
+                logger.error(err_msg)
+                raise FileNotFoundError(err_msg)
+
+            # Set file_class to GenericFile if not provided
+            if file_class is None:
+                file_class = GenericFile
+
+        finally:
+            self.dir_path = dir_path
+            self.file_class = file_class
+
+    def __str__(self) -> str:
+        """
+        Return a string representation of the object.
+
+        Returns
+        -------
+        str
+            String representation of the object.
+        """
+        return f"{__class__}(dir_path: {self.dir_path} ; file_class: {self.file_class})"
+
+    def __eq__(self, __value: object) -> bool:
+        """
+        Check if two objects are equal.
+
+        Parameters
+        ----------
+        __value : object
+            Object to compare with.
+
+        Returns
+        -------
+        bool
+            True if objects are equal, False otherwise.
+        """
+        if not isinstance(__value, GenericDir):
+            return False
+
+        tmp_test = self.dir_path == __value.dir_path
+        return tmp_test and (self.file_class == __value.file_class)
 
     @staticmethod
     def test_dir(dir_path: str):
@@ -232,3 +308,34 @@ class GenericDir:
             return False
 
         return True
+
+    @staticmethod
+    def dialog_select_dir(dir_path: str = os.getcwd()) -> str:
+        """
+        Create a dialog for directory selection.
+
+        Parameters
+        ----------
+        dir_path : str, default 'os.getcwd()'
+            Path to the starting folder.
+
+        Returns
+        -------
+        str
+            Path to the selected directory.
+        """
+        # Initialize method variables
+        qt_app  = QApplication([])
+        if not GenericDir.test_dir(dir_path):
+            err_msg = "No valid initial directory path was provided."
+            logger.error(err_msg)
+            raise FileNotFoundError(err_msg)
+
+        # Show dialog box and return path
+        title = "Select a folder"
+        path = QFileDialog.getExistingDirectory(None, title, dir_path)
+
+        # Return path
+        qt_app.closeAllWindows()
+        logger.info("Directory %s was selected.", path)
+        return path
