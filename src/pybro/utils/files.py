@@ -47,7 +47,7 @@ class GenericFile:
 
         Parameters
         ----------
-        path : str
+        file_path : str
             Path to the file.
         """
         # Select file if no path is provided
@@ -58,12 +58,13 @@ class GenericFile:
                 file_types = ";;".join(file_types)
                 file_path  = GenericFile.dialog_select_file(opt=file_types)
         finally:
-            self.file_path = file_path
+            self.file_path = os.path.abspath(file_path)
 
         # Control if path is valid and file supported
         if not GenericFile.test_file(self.file_path):
-            logger.error("No valid file path was provided.")
-            raise FileNotFoundError("No valid file path was provided.")
+            err_msg = f"No valid file path was provided ({self.file_path})."
+            logger.error(err_msg)
+            raise FileNotFoundError(err_msg)
 
         # Extract file information
         self.file_name = os.path.basename(self.file_path)
@@ -79,7 +80,10 @@ class GenericFile:
         str
             String representation of the object.
         """
-        return f"{__class__}(file_name: {self.file_name} ; file_dir: {self.file_dir})"
+        class_name = self.__class__.__name__
+        return_str = \
+            f"{class_name}(file_name: {self.file_name} ; file_dir: {self.file_dir})"
+        return return_str
 
     def __eq__(self, __value: object) -> bool:
         """
@@ -205,7 +209,7 @@ class GenericDir:
         List of the files in the folder.
     """
 
-    def __init__(self, dir_path: str = None, file_class: GenericFile = None) -> None:
+    def __init__(self, dir_path: str = None, file_class: object =  GenericFile) -> None:
         """
         Initialize a generic directory object.
 
@@ -217,26 +221,27 @@ class GenericDir:
         ----------
         dir_path : str
             Path to the directory.
+        file_class : class, default GenericFile
+            Supported file class.
 
         TODO: build file_list attribute.
         """
         # Check dir_path and set its instance value
-        try:
-            # Select directory path if no path is provided
-            if dir_path is None:
-                dir_path  = GenericDir.dialog_select_dir()
-            if not GenericDir.test_dir(dir_path):
-                err_msg = "No valid directory path was provided."
-                logger.error(err_msg)
-                raise FileNotFoundError(err_msg)
+        # Select directory path if no path is provided
+        if dir_path is None:
+            dir_path  = GenericDir.dialog_select_dir()
 
-            # Set file_class to GenericFile if not provided
-            if file_class is None:
-                file_class = GenericFile
+        # Control if dir_path is valid
+        if not GenericDir.test_dir(dir_path):
+            err_msg = "No valid directory path was provided."
+            logger.error(err_msg)
+            raise FileNotFoundError(err_msg)
 
-        finally:
-            self.dir_path = dir_path
-            self.file_class = file_class
+        # Set instance attributes
+        self.dir_path = dir_path
+        self.file_class = file_class
+
+        # List all supported files in directory
 
     def __str__(self) -> str:
         """
@@ -247,7 +252,10 @@ class GenericDir:
         str
             String representation of the object.
         """
-        return f"{__class__}(dir_path: {self.dir_path} ; file_class: {self.file_class})"
+        class_name = self.__class__.__name__
+        return_str = \
+            f"{class_name}(dir_path: {self.dir_path} ; file_class: {self.file_class})"
+        return return_str
 
     def __eq__(self, __value: object) -> bool:
         """
