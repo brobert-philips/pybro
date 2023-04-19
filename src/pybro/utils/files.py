@@ -9,6 +9,9 @@ directory management in pybro package.
 import os
 import logging
 
+# Import classes and methods
+from PyQt6.QtWidgets import QApplication, QFileDialog
+
 # Initialize logging in this file
 logger = logging.getLogger(__name__)
 
@@ -25,9 +28,14 @@ class GenericFile:
         Base name of the file.
     file_ext : str
         Extension of the file.
-    file_folder : str
-        Folder of the file.
+    file_dir : str
+        Directory of the file.
     """
+
+    FILE_TYPES = {
+        "": "All files",
+    }
+    """Supported file extensions."""
 
     def __init__(self, file_path: str = None) -> None:
         """
@@ -42,7 +50,25 @@ class GenericFile:
         path : str
             Path to the file.
         """
-        self.file_path = file_path
+        # Select file if no path is provided
+        try:
+            if file_path is None:
+                file_types = \
+                    [f"{value} (*{key})" for key, value in self.FILE_TYPES.items()]
+                file_types = ";;".join(file_types)
+                file_path  = GenericFile.dialog_select_file(opt=file_types)
+        finally:
+            self.file_path = file_path
+
+        # Control if path is valid and file supported
+        if not GenericFile.test_file(self.file_path):
+            logger.error("No valid file path was provided.")
+            raise FileNotFoundError("No valid file path was provided.")
+
+        # Extract file information
+        self.file_name = os.path.basename(self.file_path)
+        self.file_ext  = os.path.splitext(self.file_name)[1]
+        self.file_dir  = os.path.dirname (self.file_path)
 
     @staticmethod
     def test_file(file_path: str = None) -> bool:
@@ -76,6 +102,133 @@ class GenericFile:
 
         if not os.access(file_path, os.W_OK):
             logger.info("%s is not writable.", file_path)
+            return False
+
+        return True
+
+    @staticmethod
+    def dialog_select_file(
+        dir_path: str = os.getcwd(),
+        func: str = "open",
+        opt : str = "All files (*.*)"
+    ) -> str:
+        """
+        Create a dialog for file selection (save/open).
+
+        Parameters
+        ----------
+        dir_path : str, default 'os.getcwd()'
+            Path to the starting folder.
+        func : {"open", "save"}
+            Type of dialog box.
+        opt : str, default 'All files (*.*)'
+            Options that can be used to select file. Different file
+            types should be separated by 2 semicolons.
+
+        Returns
+        -------
+        str
+            Path to the selected file.
+        """
+        # Initialize method variables
+        qt_app  = QApplication([])
+        if not GenericDir.test_dir(dir_path):
+            err_msg = "No valid folder path was provided."
+            logger.error(err_msg)
+            raise FileNotFoundError(err_msg)
+
+        # Control if func parameters are valid
+        title = f"{func.capitalize()} a file"
+        if func not in ["open", "save"]:
+            err_msg  = f"Method cannot handle '{func}' func-parameter."
+            logger.error(err_msg)
+            raise ValueError(err_msg)
+
+        # Show dialog box
+        if func == "open":      # open dialog box
+            path = QFileDialog.getOpenFileName(None, title, dir_path, opt)
+            path = path[0]
+
+        elif func == "save":    # save dialog box
+            path = QFileDialog.getSaveFileName(None, title, dir_path, opt)
+            path = f"{os.path.dirname(path[0])}{os.sep}{os.path.basename(path[0])}"
+
+        else:
+            err_msg  = f"Method cannot handle '{func}' func-parameter.)"
+            logger.error(err_msg)
+            raise ValueError(err_msg)
+
+        # Return path
+        qt_app.closeAllWindows()
+        logger.info("File %s was selected.", path)
+        return path
+
+
+class GenericDir:
+    """
+    Generic directory class.
+
+    Attributes
+    ----------
+    dir_path : str
+        Path to the folder.
+    file_class : class, default GenericFile
+        Supported file class.
+    file_list : list[file_class]
+        List of the files in the folder.
+    """
+
+    def __init__(self, dir_path: str = None) -> None:
+        """
+        Initialize a generic directory object.
+
+        This method is first checks the provided path. It opens a
+        directory-selection dialog box if no path is provided. If
+        directory exists and files are supported, it loads all files.
+
+        Parameters
+        ----------
+        dir_path : str
+            Path to the directory.
+        """
+        self.dir_path = dir_path
+
+    @staticmethod
+    def test_dir(dir_path: str):
+        """
+        Test if directory is  a writable directory.
+
+        Parameters
+        ----------
+        dir_path : str
+            Path to directory to test. Path must exist and be writable.
+
+        Returns
+        -------
+        bool
+            True if path to directory is valid and directory is
+            writable, False otherwise.
+        """
+        # Check directory path and reformat it
+        if dir_path is None:
+            logger.info("No directory path was provided.")
+            return False
+
+        # Check if directory exists or if directory can be created
+        if not os.path.isdir(dir_path):
+            logger.info("%s does not exist.", dir_path)
+            return False
+
+        if os.path.isfile(dir_path):
+            logger.info("%s is a file, and not a folder.", dir_path)
+            return False
+
+        if not os.access(dir_path, os.R_OK):
+            logger.info("%s is not readable.", dir_path)
+            return False
+
+        if not os.access(dir_path, os.W_OK):
+            logger.info("%s is not writable.", dir_path)
             return False
 
         return True

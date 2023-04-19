@@ -17,7 +17,6 @@ from pybro.utils.files  import GenericFile
 logger = logging.getLogger(__name__)
 
 
-# Define a method to load a logging configuration file
 def setup_logging(log_type= "prod", output="file") -> None:
     """
     Load a logging configuration file.

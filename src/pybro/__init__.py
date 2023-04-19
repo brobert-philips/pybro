@@ -9,4 +9,4 @@ __all__ = [
 ]
 
 # Import all classes and methods from pybro package
-import pybro.utils
+from . import utils
