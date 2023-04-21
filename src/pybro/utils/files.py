@@ -223,8 +223,6 @@ class GenericDir:
             Path to the directory.
         file_class : class, default GenericFile
             Supported file class.
-
-        TODO: build file_list attribute.
         """
         # Check dir_path and set its instance value
         # Select directory path if no path is provided
@@ -242,6 +240,11 @@ class GenericDir:
         self.file_class = file_class
 
         # List all supported files in directory
+        self.file_list = self.list_files(
+            dir_path   = self.dir_path,
+            recur      = True,
+            file_class = self.file_class
+        )
 
     def __str__(self) -> str:
         """
@@ -347,3 +350,51 @@ class GenericDir:
         qt_app.closeAllWindows()
         logger.info("Directory %s was selected.", path)
         return path
+
+    @staticmethod
+    def list_files(
+        dir_path  : str,
+        recur     : bool   = False,
+        file_class: object =  GenericFile
+    ) -> list[str]:
+        """
+        Lists all files in folder.
+
+        Parameters
+        ----------
+        dir_path : str
+            Path to folder to test. Path must exist and be writable.
+        recur : bool, default False
+            If True, searches recursively.
+        file_class : class, default GenericFile
+            Supported file class.
+
+        Returns
+        -------
+        list[str]
+            List of all supported files.
+        """
+        # Initialize method variables
+        filelist = []
+
+        # Build files list
+        if file_class.test_file(dir_path):    # file path
+            return dir_path
+
+        if os.path.isdir(dir_path):     # folder path
+            # Loop over all files within the folder
+            for file in os.listdir(dir_path):
+                file_path = dir_path + os.sep + file
+
+                if os.path.isfile(file_path):   # file path
+                    if file_class.test_file(file_path):
+                        filelist.append(file_path)
+                elif recur:                     # recursive search
+                    filelist.extend(GenericDir.list_files(file_path, recur, file_class))
+
+        else:   # path is not a file or a directory
+            err_msg = f"{dir_path} is not a file or a directory."
+            logger.error(err_msg)
+            raise FileNotFoundError(err_msg)
+
+        return filelist

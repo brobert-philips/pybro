@@ -10,7 +10,7 @@ import logging
 import pydicom
 
 # Import submodules, classes and methods
-from pybro.utils import GenericFile, GenericDir
+from pybro.utils    import GenericFile, GenericDir
 
 # Initialize logging in this file
 logger = logging.getLogger(__name__)
@@ -76,7 +76,11 @@ class DicomFile(GenericFile):
         # Test if file exists and is writable
         if not GenericFile.test_file(file_path):
             return False
-        dicom_tags = pydicom.dcmread(file_path)
+        try:
+            dicom_tags = pydicom.dcmread(file_path)
+        except pydicom.errors.InvalidDicomError:
+            logger.info("No DICOM file found (%s).", file_path)
+            return False
 
         # ImageType tag must exist, and it should have at least 3 values
         if (0x0008, 0x0008) not in dicom_tags:
