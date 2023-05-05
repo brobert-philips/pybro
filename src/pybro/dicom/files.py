@@ -283,7 +283,7 @@ class DicomFile(GenericFile):
         Parameters
         ----------
         new_dir_path : str
-            Absolute path to the new anonymized DICOM file.
+            Absolute path to the new anonymized DICOM file//directory.
         """
         # Check if new directory path is given
         if new_dir_path is None:
@@ -296,6 +296,7 @@ class DicomFile(GenericFile):
             else:
                 logger.info("Directory %s does not exist.", new_dir_path)
                 return False
+        new_path = os.path.abspath(new_path)
 
         # Anonymize DICOM dataset
         new_dataset = self._anonymize_dataset()
@@ -407,3 +408,45 @@ class DicomDir(GenericDir):
         """
         # Initialize parent attributes
         super().__init__(dir_path, DicomFile)
+
+    def anonymize(self, new_dir_path: str = None) -> bool:
+        """
+        Anonymize all DICOM files of DicomDir instance.
+
+        If `new_dir_path` is given, the anonymized files are saved in
+        the `new_dir_path` directory according to the following file
+        name convention:
+        * anonymized subdirectory is [PID]/[STUDY_UID]/[SERIES_UID]
+        * anonymized file name is [MODALITY]_[IMG_TYPE]_[IMG_NUM].dcm
+
+        If `new_dir_path` is not given, the anonymized files are all
+        saved in the `anonymized` subdirectory at the root of the
+        DicomDir instance. The same file name convention is applied to
+        all anonymized DICOM files.
+
+        Parameters
+        ----------
+        new_dir_path : str
+            Absolute path to the new anonymized DICOM directory.
+        """
+        # Check if new directory path is given
+        if new_dir_path is None:
+            new_path  = self.dir_path + os.sep + "anonymized"
+
+        else:
+            if GenericDir.test_dir(new_dir_path):
+                new_path = new_dir_path
+            else:
+                logger.info("Directory %s does not exist.", new_dir_path)
+                return False
+        new_path = os.path.abspath(new_path)
+
+        # Control if path is accessible and create subdirectories if needed
+        if not os.path.exists(new_path):
+            os.makedirs(new_path)
+
+        # Anonymize DICOM dataset
+        for file in self.file_list:
+            DicomFile(file).anonymize(new_path)
+
+        return True
