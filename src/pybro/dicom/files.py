@@ -297,8 +297,33 @@ class DicomFile(GenericFile):
                 logger.info("Directory %s does not exist.", new_dir_path)
                 return False
 
-        # Anonymize DICOM dataset and save to new file
+        # Anonymize DICOM dataset
         new_dataset = self._anonymize_dataset()
+
+        # Build anonymized file name if new_path is a directory
+        if GenericDir.test_dir(new_path):
+            # Extract DICOM tags
+            tags = [
+                0x00100020, 0x00080050, 0x0020000E, 0x00080060, 0x00200013, 0x00080008,
+            ]
+            values     = DicomFile.get_dicom_tags(new_dataset, tags)
+            pid        = values[0x00100020]
+            acc_num    = values[0x00080050]
+            series_uid = values[0x0020000E]
+            modality   = values[0x00080060]
+            inst_num   = values[0x00200013]
+            img_type   = values[0x00080008]
+            img_type   = img_type[2] if len(img_type) > 2 else "UNK"
+
+            # Create new file absolute path
+            new_path += f"{os.sep}{pid}{os.sep}{acc_num[-16:]}{os.sep}"
+            new_path += f"{series_uid[-16:]}{os.sep}"
+            new_path += f"{modality}_{img_type}_{inst_num:05}.dcm"
+
+        # Control if path is accessible and create subdirectories if needed
+        if not os.path.exists(os.path.dirname(new_path)):
+            os.makedirs(os.path.dirname(new_path))
+
         new_dataset.save_as(new_path)
         # libdicom.anonymize_dicom(path=self.file_path, new_path=self.file_dir)
         return True
