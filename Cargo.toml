@@ -1,0 +1,22 @@
+[package]
+name = "pybro"
+version = "0.1.0"
+authors = [
+  "Benjamin Robert <benjamin.robert@philips.com>",
+]
+edition = "2021"
+
+[lib]
+name = "dicom"
+crate-type = ["cdylib"]
+path = "src/rust/dicom.rs"
+
+[dependencies]
+cpython = "*"
+dicom = "*"
+num = "*"
+evalexpr = "*"
+gethostname = "*"
+walkdir = "2"
+rayon = "1.5"
+itertools = "0.10"

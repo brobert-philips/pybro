@@ -10,11 +10,15 @@ import os
 import platform
 import re
 import logging
+
+# Import submodules, classes and methods
+from datetime   import datetime
+
+# Import packages and submodules
 import pydicom
 
 # Import submodules, classes and methods
-from datetime       import datetime
-# from pybro          import libdicom
+from pybro.dicom    import rust_dicom
 from pybro.utils    import GenericFile, GenericDir, method_exec_dur
 
 # Initialize logging in this file
@@ -452,9 +456,11 @@ class DicomDir(GenericDir):
         if not os.path.exists(new_path):
             os.makedirs(new_path)
 
-        # Anonymize DICOM dataset
-        for file in self.file_list:
-            DicomFile(file).anonymize(new_path)
+        # Anonymize DICOM files using a rust loop
+        if not rust_dicom.anonymize_dir(path=self.dir_path, new_path=new_path):
+            logger.info("Anonymization of %s failed.", self.dir_path)
+            return False
+
         logger.info("Anonymized %i DICOM files.", len(self.file_list))
 
         return True
