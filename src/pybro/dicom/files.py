@@ -15,7 +15,7 @@ import pydicom
 # Import submodules, classes and methods
 from datetime       import datetime
 # from pybro          import libdicom
-from pybro.utils    import GenericFile, GenericDir
+from pybro.utils    import GenericFile, GenericDir, method_exec_dur
 
 # Initialize logging in this file
 logger = logging.getLogger(__name__)
@@ -409,6 +409,13 @@ class DicomDir(GenericDir):
         # Initialize parent attributes
         super().__init__(dir_path, DicomFile)
 
+        # Delete all anonymized files and remove them from files list
+        anonymized_files = [file for file in self.file_list if "anonymized" in file]
+        self.file_list   = [file for file in self.file_list if "anonymized" not in file]
+        for file in anonymized_files:
+            os.remove(file)
+
+    @method_exec_dur
     def anonymize(self, new_dir_path: str = None) -> bool:
         """
         Anonymize all DICOM files of DicomDir instance.
@@ -448,5 +455,6 @@ class DicomDir(GenericDir):
         # Anonymize DICOM dataset
         for file in self.file_list:
             DicomFile(file).anonymize(new_path)
+        logger.info("Anonymized %i DICOM files.", len(self.file_list))
 
         return True

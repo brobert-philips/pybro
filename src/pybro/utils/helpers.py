@@ -8,6 +8,7 @@ and implementation of classes and methods in pybro package.
 # Import packages and submodules
 import os
 import logging
+import time
 
 # Import classes and methods
 from datetime           import datetime
@@ -47,3 +48,32 @@ def setup_logging(log_type= "prod", output="file") -> None:
         defaults={"logfilename": f"{logs_dir}{os.sep}{timestamp}.log"}
     )
     logger.info("Loaded logging configuration from %s", config_path)
+
+
+def method_exec_dur(func):
+    """
+    Measure execution duration of a method.
+
+    Parameters
+    ----------
+    func : function
+        Function for which results are cached.
+
+    Returns
+    -------
+    result
+        Result of the method.
+    """
+    def wrapper(*args, **kwargs):
+        start_time = time.perf_counter()
+        result     = func(*args, **kwargs)
+        end_time   = time.perf_counter()
+
+        logger.info(
+            "Method (%s) was executed in %.2f sec.",
+            func.__name__,
+            (end_time - start_time)
+        )
+        return result
+
+    return wrapper
