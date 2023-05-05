@@ -297,7 +297,9 @@ class DicomFile(GenericFile):
                 logger.info("Directory %s does not exist.", new_dir_path)
                 return False
 
+        # Anonymize DICOM dataset and save to new file
         new_dataset = self._anonymize_dataset()
+        new_dataset.save_as(new_path)
         # libdicom.anonymize_dicom(path=self.file_path, new_path=self.file_dir)
         return True
 
