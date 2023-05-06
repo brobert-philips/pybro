@@ -228,10 +228,11 @@ class GenericDir:
         # Select directory path if no path is provided
         if dir_path is None:
             dir_path  = GenericDir.dialog_select_dir()
+        dir_path = os.path.abspath(dir_path)
 
         # Control if dir_path is valid
         if not GenericDir.test_dir(dir_path):
-            err_msg = "No valid directory path was provided."
+            err_msg = f"No valid directory path was provided ({dir_path})."
             logger.error(err_msg)
             raise FileNotFoundError(err_msg)
 
