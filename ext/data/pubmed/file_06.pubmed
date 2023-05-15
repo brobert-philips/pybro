@@ -1,0 +1,104 @@
+PMID- 34541863
+OWN - NLM
+STAT- MEDLINE
+DCOM- 20220225
+LR  - 20220501
+IS  - 1748-880X (Electronic)
+IS  - 0007-1285 (Print)
+IS  - 0007-1285 (Linking)
+VI  - 95
+IP  - 1131
+DP  - 2022 Mar 1
+TI  - Zonal anatomy of the prostate using magnetic resonance imaging, morphometrics, 
+      and radiomic features: impact of age-related changes.
+PG  - 20210156
+LID - 10.1259/bjr.20210156 [doi]
+LID - 20210156
+AB  - OBJECTIVE: To evaluate the impact of age on the zonal anatomy of the prostate by 
+      MRI using morphometric and textural analysis. METHODS: A total of 154 men (mean 
+      age: 63 years) who underwent MRI due to a high prostate-specific antigen (PSA) 
+      level were included retrospectively. At each MRI examination the following 
+      variables were measured: overall dimensions of the prostate (whole gland (WG), 
+      transitional zone (TZ), and peripheral zone (PZ)), and thickness of the anterior 
+      fibromuscular stroma (AFMS) and the periprostatic venous plexus (PPVP) on T(2) 
+      weighted images. Identical regions of interest (ROIs) were delineated on the 
+      apparent diffusion coefficient (ADC) map on the anterior (horn) and posterior 
+      part of the PZ. Textural (TexRAD(®)) parameter differences between TZ and PZ ROIs 
+      on T(2) weighted images were analyzed by linear regression. Results were 
+      correlated with age (distributed into five decades from 22 to 89 years). RESULTS: 
+      Age was positively correlated with PSA level and glandular volumes (WG, TZ, and 
+      TZ/WG ratio; p < 0.0001) and was negatively correlated with AFSM and PPVP 
+      thickness (p < 0.0001). There was a positive correlation between ADC values of 
+      the PZ and age (p = 0.003) and between entropy of the TZ and PZ and age (p < 
+      0.001). CONCLUSION: Gradual variations in morphologic and textural features of 
+      the prostate were observed with age, mainly due to the increase in TZ volume 
+      while PZ volume tended to decrease. These modifications resulted in textural 
+      changes mainly at the expense of entropy. ADVANCES IN KNOWLEDGE: Entropy could be 
+      relevant for studying the process of aging of the prostate.
+FAU - Laschkar, Sophie
+AU  - Laschkar S
+AUID- ORCID: 0000-0002-6246-3997
+AD  - Academic Department of Radiology, Hôpital Pitié-Salpétrière, Assistance Publique 
+      des Hôpitaux de Paris, Paris, France.
+FAU - Montagne, Sarah
+AU  - Montagne S
+AD  - Academic Department of Radiology, Hôpital Pitié-Salpétrière, Assistance Publique 
+      des Hôpitaux de Paris, Paris, France.
+AD  - Sorbonne Universités, GRC n° 5, Oncotype-Uro, Paris, France.
+FAU - De Kerviler, Eric
+AU  - De Kerviler E
+AD  - Academic Departement of Radiology, Hôpital Saint Louis, Assistance Publique des 
+      Hôpitaux de Paris, Paris, France.
+FAU - Roupret, Morgan
+AU  - Roupret M
+AD  - Sorbonne Universités, GRC n° 5, Oncotype-Uro, Paris, France.
+AD  - Academic Department of Urology, Hôpital Pitié-Salpétrière, Assistance Publique 
+      des Hôpitaux de Paris, Paris, France.
+FAU - Lucidarme, Olivier
+AU  - Lucidarme O
+AD  - Academic Department of Radiology, Hôpital Pitié-Salpétrière, Assistance Publique 
+      des Hôpitaux de Paris, Paris, France.
+FAU - Cussenot, Olivier
+AU  - Cussenot O
+AD  - Sorbonne Universités, GRC n° 5, Oncotype-Uro, Paris, France.
+AD  - Academic Department of Urology, Hôpital Tenon, Assistance Publique des Hôpitaux 
+      de Paris, Paris, France.
+FAU - Renard Penna, Raphaele
+AU  - Renard Penna R
+AD  - Academic Department of Radiology, Hôpital Pitié-Salpétrière, Assistance Publique 
+      des Hôpitaux de Paris, Paris, France.
+AD  - Sorbonne Universités, GRC n° 5, Oncotype-Uro, Paris, France.
+LA  - eng
+PT  - Journal Article
+DEP - 20210919
+PL  - England
+TA  - Br J Radiol
+JT  - The British journal of radiology
+JID - 0373125
+RN  - EC 3.4.21.77 (Prostate-Specific Antigen)
+SB  - IM
+MH  - Adult
+MH  - Age Factors
+MH  - Aged
+MH  - Aged, 80 and over
+MH  - Diffusion Magnetic Resonance Imaging/*methods
+MH  - Entropy
+MH  - Humans
+MH  - Male
+MH  - Middle Aged
+MH  - Prostate/*anatomy & histology
+MH  - Prostate-Specific Antigen/blood
+MH  - Retrospective Studies
+PMC - PMC8978243
+EDAT- 2021/09/21 06:00
+MHDA- 2022/02/26 06:00
+PMCR- 2023/03/01
+CRDT- 2021/09/20 08:41
+PHST- 2023/03/01 00:00 [pmc-release]
+PHST- 2021/09/21 06:00 [pubmed]
+PHST- 2022/02/26 06:00 [medline]
+PHST- 2021/09/20 08:41 [entrez]
+AID - 10.1259/bjr.20210156 [doi]
+PST - ppublish
+SO  - Br J Radiol. 2022 Mar 1;95(1131):20210156. doi: 10.1259/bjr.20210156. Epub 2021 
+      Sep 19.

@@ -1,0 +1,336 @@
+PMID- 35642047
+OWN - NLM
+STAT- MEDLINE
+DCOM- 20220602
+LR  - 20220726
+IS  - 2051-5960 (Electronic)
+IS  - 2051-5960 (Linking)
+VI  - 10
+IP  - 1
+DP  - 2022 May 31
+TI  - The dural angioleiomyoma harbors frequent GJA4 mutation and a distinct DNA 
+      methylation profile.
+PG  - 81
+LID - 10.1186/s40478-022-01384-x [doi]
+LID - 81
+AB  - The International Society for the Study of Vascular Anomalies (ISSVA) has defined 
+      four vascular lesions in the central nervous system (CNS): arteriovenous 
+      malformations, cavernous angiomas (also known as cerebral cavernous 
+      malformations), venous malformations, and telangiectasias. From a retrospective 
+      central radiological and histopathological review of 202 CNS vascular lesions, we 
+      identified three cases of unclassified vascular lesions. Interestingly, they 
+      shared the same radiological and histopathological features evoking the cavernous 
+      subtype of angioleiomyomas described in the soft tissue. We grouped them together 
+      with four additional similar cases from our clinicopathological network and 
+      performed combined molecular analyses. In addition, cases were compared with a 
+      cohort of 5 soft tissue angioleiomyomas. Three out 6 CNS lesions presented the 
+      same p.Gly41Cys GJA4 mutation recently reported in hepatic hemangiomas and 
+      cutaneous venous malformations and found in 4/5 soft tissue angioleiomyomas of 
+      our cohort with available data. Most DNA methylation profiles were not 
+      classifiable using the CNS brain tumor (version 12.5), and sarcoma (version 12.2) 
+      classifiers. However, using unsupervised t-SNE analysis and hierarchical 
+      clustering analysis, 5 of the 6 lesions grouped together and formed a distinct 
+      epigenetic group, separated from the clusters of soft tissue angioleiomyomas, 
+      other vascular tumors, inflammatory myofibroblastic tumors and meningiomas. Our 
+      extensive literature review identified several cases similar to these lesions, 
+      with a wide variety of denominations. Based on radiological and histomolecular 
+      findings, we suggest the new terminology of "dural angioleiomyomas" (DALM) to 
+      designate these lesions characterized by a distinct DNA methylation pattern and 
+      frequent GJA4 mutations.
+CI  - © 2022. The Author(s).
+FAU - Tauziède-Espariat, Arnault
+AU  - Tauziède-Espariat A
+AD  - Department of Neuropathology, Sainte-Anne Hospital, 1, Rue Cabanis, 75014, Paris, 
+      France. a.tauziede-espariat@ghu-paris.fr.
+AD  - Inserm, UMR 1266, IMA-Brain, Institut de Psychiatrie et Neurosciences de Paris, 
+      Paris, France. a.tauziede-espariat@ghu-paris.fr.
+FAU - Pierre, Thibaut
+AU  - Pierre T
+AD  - Department of Neuropathology, Sainte-Anne Hospital, 1, Rue Cabanis, 75014, Paris, 
+      France.
+AD  - Department of Radiology, Gustave Roussy, Univ. Paris-Sud, Université 
+      Paris-Saclay, 94805, Villejuif, France.
+FAU - Wassef, Michel
+AU  - Wassef M
+AD  - Department of Pathology, Lariboisière Hospital, APHP, 75475, Paris, France.
+FAU - Castel, David
+AU  - Castel D
+AD  - U981, Molecular Predictors and New Targets in Oncology, Team Genomics and 
+      Oncogenesis of Pediatric Brain Tumors, INSERM, Gustave Roussy, Université 
+      Paris-Saclay, 94805, Villejuif, France.
+AD  - Département de Cancérologie de l'Enfant et de l'Adolescent, Gustave Roussy, 
+      Université Paris-Saclay, 94805, Villejuif, France.
+FAU - Riant, Florence
+AU  - Riant F
+AD  - Department of Neurovascular Molecular Genetics, Saint-Louis Hospital, APHP, 
+      75010, Paris, France.
+FAU - Grill, Jacques
+AU  - Grill J
+AD  - U981, Molecular Predictors and New Targets in Oncology, Team Genomics and 
+      Oncogenesis of Pediatric Brain Tumors, INSERM, Gustave Roussy, Université 
+      Paris-Saclay, 94805, Villejuif, France.
+AD  - Département de Cancérologie de l'Enfant et de l'Adolescent, Gustave Roussy, 
+      Université Paris-Saclay, 94805, Villejuif, France.
+FAU - Roux, Alexandre
+AU  - Roux A
+AD  - Inserm, UMR 1266, IMA-Brain, Institut de Psychiatrie et Neurosciences de Paris, 
+      Paris, France.
+AD  - Department of Neurosurgery, Sainte-Anne Hospital, 75014, Paris, France.
+FAU - Pallud, Johan
+AU  - Pallud J
+AD  - Inserm, UMR 1266, IMA-Brain, Institut de Psychiatrie et Neurosciences de Paris, 
+      Paris, France.
+AD  - Department of Neurosurgery, Sainte-Anne Hospital, 75014, Paris, France.
+FAU - Dezamis, Edouard
+AU  - Dezamis E
+AD  - Department of Neurosurgery, Sainte-Anne Hospital, 75014, Paris, France.
+FAU - Bresson, Damien
+AU  - Bresson D
+AD  - Department of Neurosurgery, Henri Mondor Hospital, 94000, Créteil, France.
+FAU - Benichi, Sandro
+AU  - Benichi S
+AD  - Department of Pediatric Neurosurgery, Necker Hospital, APHP, Université Paris 
+      Descartes, Sorbonne Paris Cité, Paris, France.
+FAU - Blauwblomme, Thomas
+AU  - Blauwblomme T
+AD  - Department of Pediatric Neurosurgery, Necker Hospital, APHP, Université Paris 
+      Descartes, Sorbonne Paris Cité, Paris, France.
+FAU - Benzohra, Djallel
+AU  - Benzohra D
+AD  - Department of Neuroradiology, Sainte-Anne Hospital, 75014, Paris, France.
+FAU - Gauchotte, Guillaume
+AU  - Gauchotte G
+AD  - Department of Pathology, CHRU, Nancy, France.
+FAU - Pouget, Celso
+AU  - Pouget C
+AD  - Department of Pathology, CHRU, Nancy, France.
+FAU - Colnat-Coulbois, Sophie
+AU  - Colnat-Coulbois S
+AD  - Department of Neurosurgery, CHRU, Nancy, France.
+FAU - Mokhtari, Karima
+AU  - Mokhtari K
+AD  - Service de Neuropathologie, Institut du Cerveau - Paris Brain Institute - ICM, 
+      Inserm, CNRS, Hôpitaux Universitaires La Pitié Salpêtrière - Charles Foix, 
+      Sorbonne Université, AP-HP, 75013, Paris, France.
+FAU - Balleyguier, Corinne
+AU  - Balleyguier C
+AD  - Department of Radiology, Gustave Roussy, Univ. Paris-Sud, Université 
+      Paris-Saclay, 94805, Villejuif, France.
+FAU - Larousserie, Frédérique
+AU  - Larousserie F
+AD  - Department of Pathology, Cochin Hospital, AP-HP Paris, Université de Paris, 
+      Paris, France.
+FAU - Dangouloff-Ros, Volodia
+AU  - Dangouloff-Ros V
+AD  - Paediatric Radiology Department, Institut Imagine INSERM U1163 and U1299, AP-HP, 
+      Hôpital Necker Enfants Malades, Université Paris Cité, 75015, Paris, France.
+FAU - Boddaert, Nathalie
+AU  - Boddaert N
+AD  - Paediatric Radiology Department, Institut Imagine INSERM U1163 and U1299, AP-HP, 
+      Hôpital Necker Enfants Malades, Université Paris Cité, 75015, Paris, France.
+FAU - Debily, Marie-Anne
+AU  - Debily MA
+AD  - U981, Molecular Predictors and New Targets in Oncology, Team Genomics and 
+      Oncogenesis of Pediatric Brain Tumors, INSERM, Gustave Roussy, Université 
+      Paris-Saclay, 94805, Villejuif, France.
+AD  - Département de Cancérologie de l'Enfant et de l'Adolescent, Gustave Roussy, 
+      Université Paris-Saclay, 94805, Villejuif, France.
+FAU - Hasty, Lauren
+AU  - Hasty L
+AD  - Department of Neuropathology, Sainte-Anne Hospital, 1, Rue Cabanis, 75014, Paris, 
+      France.
+FAU - Polivka, Marc
+AU  - Polivka M
+AD  - Department of Pathology, Lariboisière Hospital, APHP, 75475, Paris, France.
+FAU - Adle-Biassette, Homa
+AU  - Adle-Biassette H
+AD  - Department of Pathology, Lariboisière Hospital, APHP, 75475, Paris, France.
+FAU - Métais, Alice
+AU  - Métais A
+AD  - Department of Neuropathology, Sainte-Anne Hospital, 1, Rue Cabanis, 75014, Paris, 
+      France.
+AD  - Inserm, UMR 1266, IMA-Brain, Institut de Psychiatrie et Neurosciences de Paris, 
+      Paris, France.
+FAU - Lechapt, Emmanuèle
+AU  - Lechapt E
+AD  - Department of Neuropathology, Sainte-Anne Hospital, 1, Rue Cabanis, 75014, Paris, 
+      France.
+AD  - Department of Pathology, Hôpital Henri-Mondor, INSERM U955, Université Paris-Est, 
+      Créteil, France.
+FAU - Chrétien, Fabrice
+AU  - Chrétien F
+AD  - Department of Neuropathology, Sainte-Anne Hospital, 1, Rue Cabanis, 75014, Paris, 
+      France.
+FAU - Sahm, Felix
+AU  - Sahm F
+AD  - Department of Neuropathology, Institute of Pathology, University Hospital 
+      Heidelberg, Heidelberg, Germany.
+AD  - Clinical Cooperation Unit Neuropathology, German Consortium for Translational 
+      Cancer Research (DKTK), German Cancer Research Center (DKFZ), Heidelberg, 
+      Germany.
+FAU - Sievers, Philipp
+AU  - Sievers P
+AD  - Department of Neuropathology, Institute of Pathology, University Hospital 
+      Heidelberg, Heidelberg, Germany.
+AD  - Clinical Cooperation Unit Neuropathology, German Consortium for Translational 
+      Cancer Research (DKTK), German Cancer Research Center (DKFZ), Heidelberg, 
+      Germany.
+FAU - Varlet, Pascale
+AU  - Varlet P
+AD  - Department of Neuropathology, Sainte-Anne Hospital, 1, Rue Cabanis, 75014, Paris, 
+      France.
+AD  - Inserm, UMR 1266, IMA-Brain, Institut de Psychiatrie et Neurosciences de Paris, 
+      Paris, France.
+CN  - RENOCLIP-LOC
+LA  - eng
+PT  - Journal Article
+PT  - Research Support, Non-U.S. Gov't
+DEP - 20220531
+PL  - England
+TA  - Acta Neuropathol Commun
+JT  - Acta neuropathologica communications
+JID - 101610673
+RN  - 0 (Connexins)
+RN  - 0 (connexin 37)
+SB  - IM
+MH  - *Angiomyoma/genetics
+MH  - *Connexins/genetics
+MH  - DNA Methylation
+MH  - *Hemangioma/genetics
+MH  - Humans
+MH  - Mutation
+MH  - Retrospective Studies
+PMC - PMC9153110
+OTO - NOTNLM
+OT  - DNA methylation profile
+OT  - Dural angioleiomyoma
+OT  - GJA4
+COIS- The authors declare that they have no competing interests directly related to the 
+      topic of this article.
+EDAT- 2022/06/02 06:00
+MHDA- 2022/06/03 06:00
+CRDT- 2022/06/01 00:22
+PHST- 2022/04/19 00:00 [received]
+PHST- 2022/05/17 00:00 [accepted]
+PHST- 2022/06/01 00:22 [entrez]
+PHST- 2022/06/02 06:00 [pubmed]
+PHST- 2022/06/03 06:00 [medline]
+AID - 10.1186/s40478-022-01384-x [pii]
+AID - 1384 [pii]
+AID - 10.1186/s40478-022-01384-x [doi]
+PST - epublish
+SO  - Acta Neuropathol Commun. 2022 May 31;10(1):81. doi: 10.1186/s40478-022-01384-x.
+
+PMID- 34937768
+OWN - NLM
+STAT- MEDLINE
+DCOM- 20221227
+LR  - 20230203
+IS  - 1468-6244 (Electronic)
+IS  - 0022-2593 (Linking)
+VI  - 60
+IP  - 1
+DP  - 2023 Jan
+TI  - Impaired social cognition and fine dexterity in patients with Cowden syndrome 
+      associated with germline PTEN variants.
+PG  - 91-98
+LID - 10.1136/jmedgenet-2021-107954 [doi]
+AB  - PURPOSE: Cowden syndrome (CS) is an autosomal dominant disease related to 
+      germline PTEN variants and is characterised by multiple hamartomas, increased 
+      risk of cancers and frequent brain alteration. Since the behaviour of patients 
+      with CS sometimes appears to be inappropriate, we analysed their 
+      neuropsychological functioning. METHODS: This monocentric study was conducted 
+      between July 2018 and February 2020. A standardised neuropsychological 
+      assessment, including an evaluation of social cognition, executive functions, 
+      language and dexterity, as well as a cerebral MRI were systematically proposed to 
+      all patients with CS. Moreover, PTEN variants were identified. RESULTS: Fifteen 
+      patients from 13 families were included, with six non-sense (40%), three missense 
+      (20%), five frameshift (33.3%) and one splice site (6.6%) variant types. Twelve 
+      patients (80%) had altered social cognition: 10 patients had an abnormal modified 
+      Faux-Pas score and 5 had Ekman's facial emotions recognition impairment. Nearly 
+      all patients (93%) had impaired dexterity. Cerebral MRI showed various cerebellar 
+      anomalies in seven patients (46.7%). CONCLUSION: Altered social cognition and 
+      impaired fine dexterity are frequently associated with CS. Further studies are 
+      needed to confirm these results and to determine whether dexterity impairment is 
+      due to the effect of germline PTEN variants in the cerebellum.
+CI  - © Author(s) (or their employer(s)) 2023. No commercial re-use. See rights and 
+      permissions. Published by BMJ.
+FAU - Desjardins, Clément
+AU  - Desjardins C
+AUID- ORCID: 0000-0003-1569-9590
+AD  - Department of Neurology, AP-HP, Hôpital Avicenne, Hôpitaux Universitaires de 
+      Paris-Seine Saint Denis (HUPSSD), Bobigny, France.
+FAU - Caux, Frédéric
+AU  - Caux F
+AD  - Department of Dermatology, Sorbonne Paris Nord, AP-HP, Hôpital Avicenne, Hôpitaux 
+      Universitaires de Paris-Seine Saint Denis (HUPSSD), Bobigny, France.
+FAU - Degos, Bertrand
+AU  - Degos B
+AD  - Department of Neurology, AP-HP, Hôpital Avicenne, Hôpitaux Universitaires de 
+      Paris-Seine Saint Denis (HUPSSD), Bobigny, France.
+AD  - Dynamics and Pathophysiology of Neuronal Networks Team, Center for 
+      Interdisciplinary Research in Biology, Collège de France, CNRS UMR7241/INSERM 
+      U1050, Université PSL, Paris, France.
+FAU - Benzohra, Djallel
+AU  - Benzohra D
+AD  - Department of Radiology, AP-HP, Hôpital Avicenne, Hôpitaux Universitaires de 
+      Paris-Seine Saint Denis (HUPSSD), Bobigny, France.
+FAU - De Liège, Astrid
+AU  - De Liège A
+AD  - Department of Neurology, AP-HP, Hôpital Avicenne, Hôpitaux Universitaires de 
+      Paris-Seine Saint Denis (HUPSSD), Bobigny, France.
+FAU - Bohelay, Gérôme
+AU  - Bohelay G
+AD  - Department of Dermatology, Sorbonne Paris Nord, AP-HP, Hôpital Avicenne, Hôpitaux 
+      Universitaires de Paris-Seine Saint Denis (HUPSSD), Bobigny, France.
+FAU - Longy, Michel
+AU  - Longy M
+AD  - Cancer Genetics Unit and INSERM U1218, Institut Bergonié, University of Bordeaux, 
+      Bordeaux, France.
+FAU - Béreaux, Chloé
+AU  - Béreaux C
+AD  - Department of Neurology, AP-HP, Hôpital Avicenne, Hôpitaux Universitaires de 
+      Paris-Seine Saint Denis (HUPSSD), Bobigny, France.
+FAU - Garcin, Béatrice
+AU  - Garcin B
+AD  - Department of Neurology, AP-HP, Hôpital Avicenne, Hôpitaux Universitaires de 
+      Paris-Seine Saint Denis (HUPSSD), Bobigny, France beatrice.garcin@aphp.fr.
+AD  - Institut du Cerveau et de la Moelle épinière - ICM, Inserm U1127, CNRS UMR 7225, 
+      Sorbonne Université, Paris, France.
+LA  - eng
+PT  - Journal Article
+DEP - 20211222
+PL  - England
+TA  - J Med Genet
+JT  - Journal of medical genetics
+JID - 2985087R
+RN  - EC 3.1.3.67 (PTEN Phosphohydrolase)
+RN  - EC 3.1.3.67 (PTEN protein, human)
+SB  - IM
+MH  - Humans
+MH  - *Hamartoma Syndrome, Multiple/genetics
+MH  - Social Cognition
+MH  - PTEN Phosphohydrolase/genetics
+MH  - Germ-Line Mutation/genetics
+MH  - Germ Cells
+OTO - NOTNLM
+OT  - behavioural
+OT  - genetics
+OT  - germline mutation
+OT  - medical
+OT  - neurology
+OT  - psychology
+COIS- Competing interests: None declared.
+EDAT- 2021/12/24 06:00
+MHDA- 2022/12/28 06:00
+CRDT- 2021/12/23 05:34
+PHST- 2021/05/04 00:00 [received]
+PHST- 2021/12/03 00:00 [accepted]
+PHST- 2021/12/24 06:00 [pubmed]
+PHST- 2022/12/28 06:00 [medline]
+PHST- 2021/12/23 05:34 [entrez]
+AID - jmedgenet-2021-107954 [pii]
+AID - 10.1136/jmedgenet-2021-107954 [doi]
+PST - ppublish
+SO  - J Med Genet. 2023 Jan;60(1):91-98. doi: 10.1136/jmedgenet-2021-107954. Epub 2021 
+      Dec 22.

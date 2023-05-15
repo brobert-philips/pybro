@@ -1,0 +1,158 @@
+PMID- 34327133
+OWN - NLM
+STAT- PubMed-not-MEDLINE
+LR  - 20220425
+IS  - 2234-943X (Print)
+IS  - 2234-943X (Electronic)
+IS  - 2234-943X (Linking)
+VI  - 11
+DP  - 2021
+TI  - Development of a Machine Learning Classifier Based on Radiomic Features Extracted 
+      From Post-Contrast 3D T1-Weighted MR Images to Distinguish Glioblastoma From 
+      Solitary Brain Metastasis.
+PG  - 638262
+LID - 10.3389/fonc.2021.638262 [doi]
+LID - 638262
+AB  - OBJECTIVES: To differentiate Glioblastomas (GBM) and Brain Metastases (BM) using 
+      a radiomic features-based Machine Learning (ML) classifier trained from 
+      post-contrast three-dimensional T1-weighted (post-contrast 3DT1) MR imaging, and 
+      compare its performance in medical diagnosis versus human experts, on a testing 
+      cohort. METHODS: We enrolled 143 patients (71 GBM and 72 BM) in a retrospective 
+      bicentric study from January 2010 to May 2019 to train the classifier. 
+      Post-contrast 3DT1 MR images were performed on a 3-Tesla MR unit and 100 radiomic 
+      features were extracted. Selection and optimization of the Machine Learning (ML) 
+      classifier was performed using a nested cross-validation. Sensitivity, 
+      specificity, balanced accuracy, and area under the receiver operating 
+      characteristic curve (AUC) were calculated as performance metrics. The model 
+      final performance was cross-validated, then evaluated on a test set of 37 
+      patients, and compared to human blind reading using a McNemar's test. RESULTS: 
+      The ML classifier had a mean [95% confidence interval] sensitivity of 85% [77; 
+      94], a specificity of 87% [78; 97], a balanced accuracy of 86% [80; 92], and an 
+      AUC of 92% [87; 97] with cross-validation. Sensitivity, specificity, balanced 
+      accuracy and AUC were equal to 75, 86, 80 and 85% on the test set. Sphericity 3D 
+      radiomic index highlighted the highest coefficient in the logistic regression 
+      model. There were no statistical significant differences observed between the 
+      performance of the classifier and the experts' blinded examination. CONCLUSIONS: 
+      The proposed diagnostic support system based on radiomic features extracted from 
+      post-contrast 3DT1 MR images helps in differentiating solitary BM from GBM with 
+      high diagnosis performance and generalizability.
+CI  - Copyright © 2021 de Causans, Carré, Roux, Tauziède-Espariat, Ammari, Dezamis, 
+      Dhermain, Reuzé, Deutsch, Oppenheim, Varlet, Pallud, Edjlali and Robert.
+FAU - de Causans, Alix
+AU  - de Causans A
+AD  - Neuroradiology Department, Hôpital Sainte-Anne, GHU-Paris Psychiatrie et 
+      Neurosciences, Paris, France.
+AD  - Université de Paris, Paris, France.
+AD  - Inserm, UMR1266, IMA-Brain, Institut de Psychiatrie et Neurosciences, Paris, 
+      France.
+FAU - Carré, Alexandre
+AU  - Carré A
+AD  - Radiothérapie Moléculaire et Innovation Thérapeutique, INSERM UMR1030, Gustave 
+      Roussy Cancer Campus, Université Paris Saclay, Villejuif, France.
+AD  - Département de Radiothérapie, Gustave Roussy, Université Paris Saclay, Villejuif, 
+      France.
+FAU - Roux, Alexandre
+AU  - Roux A
+AD  - Université de Paris, Paris, France.
+AD  - Inserm, UMR1266, IMA-Brain, Institut de Psychiatrie et Neurosciences, Paris, 
+      France.
+AD  - Service de Neurochirurgie, GHU Paris - Psychiatrie et Neurosciences - Hôpital 
+      Sainte-Anne, Paris, France.
+FAU - Tauziède-Espariat, Arnault
+AU  - Tauziède-Espariat A
+AD  - Université de Paris, Paris, France.
+AD  - Inserm, UMR1266, IMA-Brain, Institut de Psychiatrie et Neurosciences, Paris, 
+      France.
+AD  - Service de Neuropathologie, GHU Paris - Psychiatrie et Neurosciences - Hôpital 
+      Sainte-Anne, Paris, France.
+FAU - Ammari, Samy
+AU  - Ammari S
+AD  - Département de Radiologie, Gustave Roussy, Université Paris Saclay, Villejuif, 
+      France.
+AD  - BioMaps UMR1281, Université Paris-Saclay, CNRS, INSERM, CEA, Orsay, France.
+FAU - Dezamis, Edouard
+AU  - Dezamis E
+AD  - Université de Paris, Paris, France.
+AD  - Inserm, UMR1266, IMA-Brain, Institut de Psychiatrie et Neurosciences, Paris, 
+      France.
+AD  - Service de Neurochirurgie, GHU Paris - Psychiatrie et Neurosciences - Hôpital 
+      Sainte-Anne, Paris, France.
+FAU - Dhermain, Frederic
+AU  - Dhermain F
+AD  - Radiothérapie Moléculaire et Innovation Thérapeutique, INSERM UMR1030, Gustave 
+      Roussy Cancer Campus, Université Paris Saclay, Villejuif, France.
+AD  - Département de Radiothérapie, Gustave Roussy, Université Paris Saclay, Villejuif, 
+      France.
+FAU - Reuzé, Sylvain
+AU  - Reuzé S
+AD  - Radiothérapie Moléculaire et Innovation Thérapeutique, INSERM UMR1030, Gustave 
+      Roussy Cancer Campus, Université Paris Saclay, Villejuif, France.
+AD  - Département de Radiothérapie, Gustave Roussy, Université Paris Saclay, Villejuif, 
+      France.
+FAU - Deutsch, Eric
+AU  - Deutsch E
+AD  - Radiothérapie Moléculaire et Innovation Thérapeutique, INSERM UMR1030, Gustave 
+      Roussy Cancer Campus, Université Paris Saclay, Villejuif, France.
+AD  - Département de Radiothérapie, Gustave Roussy, Université Paris Saclay, Villejuif, 
+      France.
+FAU - Oppenheim, Catherine
+AU  - Oppenheim C
+AD  - Neuroradiology Department, Hôpital Sainte-Anne, GHU-Paris Psychiatrie et 
+      Neurosciences, Paris, France.
+AD  - Université de Paris, Paris, France.
+AD  - Inserm, UMR1266, IMA-Brain, Institut de Psychiatrie et Neurosciences, Paris, 
+      France.
+FAU - Varlet, Pascale
+AU  - Varlet P
+AD  - Université de Paris, Paris, France.
+FAU - Pallud, Johan
+AU  - Pallud J
+AD  - Université de Paris, Paris, France.
+AD  - Inserm, UMR1266, IMA-Brain, Institut de Psychiatrie et Neurosciences, Paris, 
+      France.
+AD  - Service de Neurochirurgie, GHU Paris - Psychiatrie et Neurosciences - Hôpital 
+      Sainte-Anne, Paris, France.
+FAU - Edjlali, Myriam
+AU  - Edjlali M
+AD  - Neuroradiology Department, Hôpital Sainte-Anne, GHU-Paris Psychiatrie et 
+      Neurosciences, Paris, France.
+AD  - Université de Paris, Paris, France.
+AD  - Inserm, UMR1266, IMA-Brain, Institut de Psychiatrie et Neurosciences, Paris, 
+      France.
+FAU - Robert, Charlotte
+AU  - Robert C
+AD  - Radiothérapie Moléculaire et Innovation Thérapeutique, INSERM UMR1030, Gustave 
+      Roussy Cancer Campus, Université Paris Saclay, Villejuif, France.
+AD  - Département de Radiothérapie, Gustave Roussy, Université Paris Saclay, Villejuif, 
+      France.
+LA  - eng
+PT  - Journal Article
+DEP - 20210713
+PL  - Switzerland
+TA  - Front Oncol
+JT  - Frontiers in oncology
+JID - 101568867
+PMC - PMC8315001
+OTO - NOTNLM
+OT  - brain metastasis
+OT  - diagnostic decision support system
+OT  - glioblastoma
+OT  - machine learning
+OT  - radiomics
+COIS- The authors declare that the research was conducted in the absence of any 
+      commercial or financial relationships that could be construed as a potential 
+      conflict of interest. The funder was not involved in the study design, 
+      collection, analysis, interpretation of data, the writing of this article or the 
+      decision to submit it for publication.
+EDAT- 2021/07/31 06:00
+MHDA- 2021/07/31 06:01
+CRDT- 2021/07/30 06:47
+PHST- 2020/12/05 00:00 [received]
+PHST- 2021/06/17 00:00 [accepted]
+PHST- 2021/07/30 06:47 [entrez]
+PHST- 2021/07/31 06:00 [pubmed]
+PHST- 2021/07/31 06:01 [medline]
+AID - 10.3389/fonc.2021.638262 [doi]
+PST - epublish
+SO  - Front Oncol. 2021 Jul 13;11:638262. doi: 10.3389/fonc.2021.638262. eCollection 
+      2021.
