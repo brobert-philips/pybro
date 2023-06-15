@@ -13,7 +13,7 @@ def test_dicom_file():
     Test the `DicomFile` class.
     """
     # Anonymize a DICOM file
-    dicom_file = DicomFile("data/dicom/supported_file.dcm")
+    dicom_file = DicomFile("ext/data/dicom/supported_file.dcm")
     print(dicom_file)
     dicom_file.anonymize()
 
@@ -22,6 +22,6 @@ def test_dicom_folder():
     Test the `DicomFolder` class.
     """
     # Anonymize a DICOM file
-    dicom_dir = DicomDir("data/dicom/dicom_exam")
+    dicom_dir = DicomDir("ext/data/dicom/dicom_exam")
     print(dicom_dir)
     dicom_dir.anonymize()
