@@ -7,6 +7,8 @@ extern crate rayon;
 
 // Import internal libraries
 use cpython::{PyResult, Python};
+use dicom::core::DataElement;
+use dicom::core::DicomValue;
 use dicom::object::{open_file};
 use dicom::{core::{Tag, VR}};
 use num::integer::div_ceil;
@@ -131,10 +133,11 @@ fn anonymize_file(
     ];
 
     // Group tags by VR type
-    let mut vr_map = std::collections::HashMap::new();
     for (tag, vr, value) in tags.into_iter() {
-        let vec = vr_map.entry(vr).or_insert_with(Vec::new);
-        vec.push((tag, value));
+        let primitive_value = dicom::core::PrimitiveValue::from(value.to_string());
+        let dicom_value = DicomValue::from(primitive_value);
+        let data_element = DataElement::new(tag, vr, dicom_value);
+        file.put_element(data_element);
     }
 
     // Clear specific DICOM tags

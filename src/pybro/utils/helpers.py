@@ -8,6 +8,7 @@ and implementation of classes and methods in pybro package.
 # Import packages and submodules
 import os
 import logging
+import logging.config
 import time
 
 # Import classes and methods

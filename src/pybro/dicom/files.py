@@ -73,8 +73,6 @@ class DicomFile(GenericFile):
         Directory of the file.
     dataset : pydicom.dataset.FileDataset
         DICOM dataset.
-
-    TODO: implement DICOM file anonymization
     """
 
     FILE_TYPES = {
