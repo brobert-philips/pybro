@@ -132,7 +132,7 @@ fn anonymize_file(
         (Tag(0x0020, 0x0010), VR::DA, &study_uid),
     ];
 
-    // Group tags by VR type
+    // Change DICOM tags according to new values
     for (tag, vr, value) in tags.into_iter() {
         let primitive_value = dicom::core::PrimitiveValue::from(value.to_string());
         let dicom_value = DicomValue::from(primitive_value);
