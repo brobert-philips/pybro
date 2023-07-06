@@ -442,30 +442,23 @@ class DicomDir(GenericDir):
         for file in anonymized_files:
             os.remove(file)
 
-        # Build files DataFrame
-        start_time = time.perf_counter()
-        self.dicom_df = pandas.DataFrame(columns=DATAFRAME_TAGS)
-        self.dicom_df = self.dicom_df.assign(File=None)
-        for file in self.file_list:
-            # Extract DICOM tags
-            dicom_file = DicomFile(file)
-            tags       = DicomFile.get_dicom_tags(dicom_file.dataset, DATAFRAME_TAGS)
-            tags       = {key:[value] for key,value in tags.items()}
-            tags_df    = pandas.DataFrame(tags)
-            tags_df    = tags_df.assign(File=file)
-
-            # Add DICOM tags to DataFrame
-            self.dicom_df = pandas.concat([self.dicom_df, tags_df], ignore_index=True)
-        intermediate_time = time.perf_counter()
-
         # Build files DataFrame using rust library
-        if not rust_dicom.extract_dicom_tags(path=self.dir_path):
-            logger.info("Failed to build the DICOM DB for directory %s.", self.dir_path)
-        logger.info("Built the DICOM DB successfully for directory %s.", self.dir_path)
-        stop_time = time.perf_counter()
+        self.dicom_df  = rust_dicom.extract_dicom_tags(path=self.file_list)
+        self.dicom_df  = pandas.DataFrame(self.dicom_df)
 
-        print(f"1st loop took {intermediate_time - start_time} sec.")
-        print(f"2nd loop took {stop_time - intermediate_time} sec.")
+        # Extract list of not supported files
+        non_dicom_files = self.file_list
+        self.file_list  = list(self.dicom_df.file)
+        non_dicom_files = list(set(non_dicom_files) - set(self.file_list))
+
+        # Log not supported files
+        for file in non_dicom_files:
+            logger.info("File %s is not supported.", file)
+        logger.info(
+            "%i DICOM files were extracted in %s.",
+            len(self.file_list),
+            self.dir_path,
+        )
 
     @method_exec_dur
     def anonymize(self, new_dir_path: str = None) -> bool:

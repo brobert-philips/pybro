@@ -237,7 +237,7 @@ class GenericDir:
             raise FileNotFoundError(err_msg)
 
         # Set instance attributes
-        self.dir_path = dir_path
+        self.dir_path   = dir_path
         self.file_class = file_class
 
         # List all supported files in directory
@@ -388,8 +388,9 @@ class GenericDir:
                 file_path = dir_path + os.sep + file
 
                 if os.path.isfile(file_path):   # file path
-                    if file_class.test_file(file_path):
-                        filelist.append(file_path)
+                    # if file_class.test_file(file_path):
+                    #     filelist.append(file_path)
+                    filelist.append(file_path)
                 elif recur:                     # recursive search
                     filelist.extend(GenericDir.list_files(file_path, recur, file_class))
 

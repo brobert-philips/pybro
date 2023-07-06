@@ -38,7 +38,8 @@ py_module_initializer! {
             "extract_dicom_tags",
             py_fn!(
                 python_runtime,
-                extract_dicom_tags(path: String)
+                extract_dicom_tags(path: Vec<String>)
+                // extract_dicom_tags(path: String)
             )
         )?;
         Ok(())
@@ -271,12 +272,14 @@ fn anonymize_dir(
         .collect::<Vec<_>>(); // Collect the files into a vector
 
 
-    // Anonymize all files
+    // Loop over all files
     let mut nb_anonymized_files = 0;
-
     for file in file_list.into_iter() {
         let file_path = String::from(file.path().display().to_string());
+
+        // Check if file is a file
         if file.metadata().unwrap().is_file() {
+            // Anonymize file if possible
             if anonymize_file(file_path.clone(), dir_path.clone(), true) {
                 nb_anonymized_files += 1
             } else {
@@ -287,6 +290,7 @@ fn anonymize_dir(
         }
     }
 
+    // Print number of anonymized files
     println!("{} files anonymized.", nb_anonymized_files);
     return Ok(true);
 
@@ -294,8 +298,8 @@ fn anonymize_dir(
 
 fn extract_dicom_tags(
     _py: Python,
-    path: String
-) -> PyResult<bool> {
+    path: Vec<String> // String
+) -> PyResult<Vec<PyDict>> {
     // DICOM tags to extract
     let tags_to_extract = vec![
         Tag(0x0008,0x0008), // ImageType
@@ -315,29 +319,26 @@ fn extract_dicom_tags(
         Tag(0x0020,0x0013), // InstanceNumber
     ];
 
-    // Build file list
-    let file_list = WalkDir::new(&path)
-        .into_iter()
-        .filter_map(|file| file.ok())
-        .collect::<Vec<_>>(); // Collect the files into a vector
-
     // Loop over all files
-    let mut dicom_db = Vec::new();
-    for file in file_list.into_iter() {
-        let file_path = file.path();
-        // if file_path.is_file() {
-        if is_dicom_file(file_path.to_string_lossy().into_owned()) {
-                let dataset = open_file(&file_path).unwrap();
-            let dict = PyDict::new(_py);
-            for tag in tags_to_extract.iter() {
-                if let Some(element) = dataset.element(*tag).ok() {
-                    let value = element.value().to_str().unwrap().to_string();
-                    dict.set_item(_py, tag.to_string(), value).unwrap();
-                }
+    let mut dicom_db = Vec::with_capacity(path.len());
+    for file in path.into_iter().filter(|file| is_dicom_file(file.clone())) {
+
+        let dataset = open_file(file.clone()).unwrap();
+        let dict = PyDict::new(_py);
+        dict.set_item(_py, "file", file.clone()).unwrap();
+
+        // Loop over tags
+        for tag in tags_to_extract.iter() {
+            if let Some(element) = dataset.element(*tag).ok() {
+                let value = element.value().to_str().unwrap().to_string();
+                dict.set_item(_py, tag.to_string(), value).unwrap();
             }
-            dicom_db.push(dict);
         }
+
+        // Add file tags to dicom_db
+        dicom_db.push(dict);
     }
 
-    return Ok(true);
+    // Return dicom_db
+    return Ok(dicom_db);
 }
