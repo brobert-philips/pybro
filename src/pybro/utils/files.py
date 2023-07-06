@@ -388,8 +388,6 @@ class GenericDir:
                 file_path = dir_path + os.sep + file
 
                 if os.path.isfile(file_path):   # file path
-                    # if file_class.test_file(file_path):
-                    #     filelist.append(file_path)
                     filelist.append(file_path)
                 elif recur:                     # recursive search
                     filelist.extend(GenericDir.list_files(file_path, recur, file_class))
