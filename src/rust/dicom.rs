@@ -6,7 +6,7 @@ extern crate dicom;
 extern crate rayon;
 
 // Import internal libraries
-use cpython::{PyResult, Python};
+use cpython::{PyResult, Python, PyDict};
 use dicom::core::DataElement;
 use dicom::core::DicomValue;
 use dicom::object::{open_file};
@@ -33,19 +33,23 @@ py_module_initializer! {
                 anonymize_dir(path: String, new_path: String)
             )
         )?;
+        module.add(
+            python_runtime,
+            "extract_dicom_tags",
+            py_fn!(
+                python_runtime,
+                extract_dicom_tags(path: String)
+            )
+        )?;
         Ok(())
     }
 }
 
 
-// Function to anonymize a DICOM file
-fn anonymize_file(
-    path: String,
-    new_path: String,
-    name_convention: bool
-) -> bool {
+// Function to test if a file is a supported DICOM file
+fn is_dicom_file(path: String) -> bool {
     // Test if the file is a DICOM file
-    let mut file = match open_file(&path) {
+    let file = match open_file(&path) {
         Ok(file) => file,
         Err(_) => {
             println!("Failed to open file at path: {}", path);
@@ -63,6 +67,24 @@ fn anonymize_file(
         println!("No ImageType tag in <{}>.", path);
         return false;
     }
+
+    return true;
+}
+
+
+// Function to anonymize a DICOM file
+fn anonymize_file(
+    path: String,
+    new_path: String,
+    name_convention: bool
+) -> bool {
+    // Test if the file is a supported DICOM file
+    if !is_dicom_file(path.clone()) {
+        return false;
+    }
+
+    let mut file = open_file(path).unwrap();
+    let img_type_tag = file.element(Tag(0x0008, 0x0008)).unwrap().to_str().unwrap().to_string();
 
     // Reformat ImageType value
     let img_type_list: Vec<&str> = img_type_tag.split('/').collect();
@@ -252,7 +274,7 @@ fn anonymize_dir(
     // Anonymize all files
     let mut nb_anonymized_files = 0;
 
-    for file in file_list.into_iter() { // Use .into_iter() to turn Vec into an iterator
+    for file in file_list.into_iter() {
         let file_path = String::from(file.path().display().to_string());
         if file.metadata().unwrap().is_file() {
             if anonymize_file(file_path.clone(), dir_path.clone(), true) {
@@ -268,4 +290,54 @@ fn anonymize_dir(
     println!("{} files anonymized.", nb_anonymized_files);
     return Ok(true);
 
+}
+
+fn extract_dicom_tags(
+    _py: Python,
+    path: String
+) -> PyResult<bool> {
+    // DICOM tags to extract
+    let tags_to_extract = vec![
+        Tag(0x0008,0x0008), // ImageType
+        Tag(0x0008,0x0012), // InstanceCreationDate
+        Tag(0x0008,0x0020), // StudyDate
+        Tag(0x0008,0x0021), // SeriesDate
+        Tag(0x0008,0x0022), // AcquisitionDate
+        Tag(0x0008,0x0023), // ContentDate
+        Tag(0x0008,0x0050), // AccessionNumber
+        Tag(0x0008,0x0060), // Modality
+        Tag(0x0008,0x1010), // StationName
+        Tag(0x0010,0x0010), // PatientName
+        Tag(0x0010,0x0020), // PatientID
+        Tag(0x0010,0x0030), // PatientBirthDate
+        Tag(0x0020,0x000E), // SeriesInstanceUID
+        Tag(0x0020,0x0010), // StudyID
+        Tag(0x0020,0x0013), // InstanceNumber
+    ];
+
+    // Build file list
+    let file_list = WalkDir::new(&path)
+        .into_iter()
+        .filter_map(|file| file.ok())
+        .collect::<Vec<_>>(); // Collect the files into a vector
+
+    // Loop over all files
+    let mut dicom_db = Vec::new();
+    for file in file_list.into_iter() {
+        let file_path = file.path();
+        // if file_path.is_file() {
+        if is_dicom_file(file_path.to_string_lossy().into_owned()) {
+                let dataset = open_file(&file_path).unwrap();
+            let dict = PyDict::new(_py);
+            for tag in tags_to_extract.iter() {
+                if let Some(element) = dataset.element(*tag).ok() {
+                    let value = element.value().to_str().unwrap().to_string();
+                    dict.set_item(_py, tag.to_string(), value).unwrap();
+                }
+            }
+            dicom_db.push(dict);
+        }
+    }
+
+    return Ok(true);
 }

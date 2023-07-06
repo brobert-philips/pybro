@@ -7,9 +7,11 @@ DICOM directory management in pybro package.
 
 # Import packages and submodules
 import os
+import pandas
 import platform
 import re
 import logging
+import time
 
 # Import submodules, classes and methods
 from datetime   import datetime
@@ -54,6 +56,25 @@ CLEAR_TAGS = [
     "RequestedProcedureID",
     "IssueDateOfImagingServiceRequest",
     "ContentSequence",
+]
+
+"""Constant containing all cleared DICOM tags."""
+DATAFRAME_TAGS = [
+    "ImageType",
+    "InstanceCreationDate",
+    "StudyDate",
+    "SeriesDate",
+    "AcquisitionDate",
+    "ContentDate",
+    "AccessionNumber",
+    "Modality",
+    "StationName",
+    "PatientName",
+    "PatientID",
+    "PatientBirthDate",
+    "SeriesInstanceUID",
+    "StudyID",
+    "InstanceNumber",
 ]
 
 
@@ -167,7 +188,10 @@ class DicomFile(GenericFile):
 
             # Check DICOM existence and get processed value
             if tag in dataset:
-                out_value[tag] = dataset[tag].value
+                if tag in {"ImageType"}:
+                    out_value[tag] = dataset[tag].value[2]
+                else:
+                    out_value[tag] = dataset[tag].value
 
             else:
                 out_value[tag] =  ""
@@ -401,7 +425,8 @@ class DicomDir(GenericDir):
         """
         Initialize a DICOM directory object.
 
-        This method first initializes the GenericDir attributes.
+        This method first initializes the GenericDir attributes. It
+        builds a DICOM database for all supported DICOM files.
 
         Parameters
         ----------
@@ -416,6 +441,31 @@ class DicomDir(GenericDir):
         self.file_list   = [file for file in self.file_list if "anonymized" not in file]
         for file in anonymized_files:
             os.remove(file)
+
+        # Build files DataFrame
+        start_time = time.perf_counter()
+        self.dicom_df = pandas.DataFrame(columns=DATAFRAME_TAGS)
+        self.dicom_df = self.dicom_df.assign(File=None)
+        for file in self.file_list:
+            # Extract DICOM tags
+            dicom_file = DicomFile(file)
+            tags       = DicomFile.get_dicom_tags(dicom_file.dataset, DATAFRAME_TAGS)
+            tags       = {key:[value] for key,value in tags.items()}
+            tags_df    = pandas.DataFrame(tags)
+            tags_df    = tags_df.assign(File=file)
+
+            # Add DICOM tags to DataFrame
+            self.dicom_df = pandas.concat([self.dicom_df, tags_df], ignore_index=True)
+        intermediate_time = time.perf_counter()
+
+        # Build files DataFrame using rust library
+        if not rust_dicom.extract_dicom_tags(path=self.dir_path):
+            logger.info("Failed to build the DICOM DB for directory %s.", self.dir_path)
+        logger.info("Built the DICOM DB successfully for directory %s.", self.dir_path)
+        stop_time = time.perf_counter()
+
+        print(f"1st loop took {intermediate_time - start_time} sec.")
+        print(f"2nd loop took {stop_time - intermediate_time} sec.")
 
     @method_exec_dur
     def anonymize(self, new_dir_path: str = None) -> bool:

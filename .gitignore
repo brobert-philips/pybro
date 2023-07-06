@@ -131,7 +131,9 @@ dmypy.json
 # MacOS file system
 .DS_Store
 
-
 # Added by cargo
-
 /target
+
+# python test generated files
+anonymized/
+*_anonymized.dcm
